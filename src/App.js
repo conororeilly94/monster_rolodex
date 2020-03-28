@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component';
 
 import './App.css';
 
@@ -25,16 +26,17 @@ class App extends Component {
 
   render() {
     const { monsters, searchField } = this.state;
-    // Same as writing const monsters/searchField = this.state.monsters/searchField;
+    // Same as writing --> const monsters/searchField = this.state.monsters/searchField;
     const fileredMonsters = monsters.filter(monster =>
+      // Filter --> Filter out elements based on function we pass. Will give back new array
       monster.name.toLowerCase().includes(searchField.toLowerCase())
+      // Includes --> Takes single argument. Checks inside array to check if element we passed exists in array
     )
     return (
       <div className="App">
-        <input
-          type='search'
+        <SearchBox
           placeholder='Search Monsters...'
-          onChange={e => this.setState({ searchField: e.target.value })}
+          handleChange={e => this.setState({ searchField: e.target.value })}
         />
         <CardList monsters={fileredMonsters} />
       </div>
