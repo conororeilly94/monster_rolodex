@@ -25,14 +25,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <CardList name="Conor">
-          {
-            this.state.monsters.map(monster => (
-              // map returns function we call and iterates over every element in the function
-              // map creates new arrays on our existing arrays 
-              <h1 key={monster.id}> {monster.name} </h1>
-            ))}
-        </CardList>
+        <CardList monsters={this.state.monsters} />
       </div>
     );
   }
